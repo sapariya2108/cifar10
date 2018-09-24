@@ -1,7 +1,6 @@
 import sys
 import os
 from keras.models import *
-import matplotlib.pyplot as plt
 import numpy as np
 import keras
 from keras.layers import *
