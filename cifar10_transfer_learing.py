@@ -106,5 +106,5 @@ def train(model_path):
         json_file.write(model_json)
 
 
-model_path = "H:\\CIFAR10 Model"
+model_path = ".\flodername\"
 train(model_path)
