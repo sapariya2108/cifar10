@@ -15,8 +15,8 @@ last_block_layer=249
 img_height,img_width=139,139
 batch_size=32
 nb_epoch=20
-learn_rate=1e-4
-momentum=0.9
+#learn_rate=1e-4
+#momentum=0.9
 transformation_ratio=0.05
 nb_images=50000
 valid_images=2000
@@ -56,8 +56,9 @@ def train(model_path):
         layer.trainable = False
     for layer in model.layers[last_block_layer:]:
         layer.trainable = True
-
-    model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+    
+    rmsprop = keras.optimizers.RMSprop(lr=0.1, rho=0.9, epsilon=None, decay=0.0)
+    model.compile(optimizer=rmsprop, loss='categorical_crossentropy', metrics=['accuracy'])
 
     A_train,B_train,A_test,B_test = load_cifar10_data(139,139)
     np.save('A_train', A_train)
