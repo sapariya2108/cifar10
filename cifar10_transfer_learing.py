@@ -94,7 +94,10 @@ def train(model_path):
         # fraction of images reserved for validation (strictly between 0 and 1)
         validation_split=0.0)
     datagen.fit(A_train)
+    datagen.fit(A_test)
     np.save("A_trainFinal",A_train)
+    np.save("A_testFinal",A_test)
+    
     print("Start Tunning")
     model.fit_generator(datagen.flow(A_train,B_train,batch_size=batch_size), steps_per_epoch=nb_images / batch_size,
                         epochs=nb_epoch,
