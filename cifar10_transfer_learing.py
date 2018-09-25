@@ -66,6 +66,7 @@ def train(model_path):
     np.save('B_test', B_test)
     print("Complete Loading")
     datagen = ImageDataGenerator(
+        rescale=1. / 255,
         featurewise_center=False,  # set input mean to 0 over the dataset
         samplewise_center=False,  # set each sample mean to 0
         featurewise_std_normalization=False,  # divide inputs by std of the dataset
