@@ -105,5 +105,5 @@ def train(model_path):
         json_file.write(model_json)
 
 
-model_path = ".\foldername\"
+model_path = ".\\foldername\\"
 train(model_path)
