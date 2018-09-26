@@ -86,8 +86,6 @@ def train(model_path):
         cval=0.,  # value used for fill_mode = "constant"
         horizontal_flip=True,  # randomly flip images
         vertical_flip=False,  # randomly flip images
-        # set rescaling factor (applied before any other transformation)
-        rescale=None,
         # set function that will be applied on each input
         preprocessing_function=None,
         # image data format, either "channels_first" or "channels_last"
