@@ -99,7 +99,14 @@ def train(model_path):
     np.save("A_trainFinal",A_train)
     np.save("A_testFinal",A_test)
     
+    final_weights_path=os.path.join(os.path.abspath(model_path),'model_weights.h5')
+    
+    callbacks_list = [ModelCheckpoint(final_weights_path, monitor='val_acc', verbose=1, save_best_only=True),
+                      EarlyStopping(monitor='val_acc', patience=5, verbose=0)]
+    
+    
     print("Start Tunning")
+    
     model.fit_generator(datagen.flow(A_train,B_train,batch_size=batch_size), steps_per_epoch=nb_images / batch_size,
                         epochs=nb_epoch,
                         validation_data=datagen.flow(A_test,B_test,batch_size=batch_size),validation_step=valid_images/batch_size)
@@ -109,5 +116,5 @@ def train(model_path):
         json_file.write(model_json)
 
 
-model_path = ".\\foldername\\"
+model_path = os.path.abspath("/foldername/")
 train(model_path)
