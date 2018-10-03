@@ -106,10 +106,12 @@ def train(model_path):
     
     print("Start Tunning")
     
-    model.fit_generator(datagen.flow(A_train,B_train,batch_size=batch_size), steps_per_epoch=nb_images / batch_size,
+    model.fit_generator(datagen.flow(A_train,B_train,batch_size=batch_size), steps_per_epoch=nb_images/batch_size,
                         epochs=nb_epoch,
-                        validation_data=datagen.flow(A_test,B_test,batch_size=batch_size),validation_step=valid_images/batch_size)
-
+                        validation_data=datagen.flow(A_test,B_test,batch_size=batch_size),
+                        validation_steps=valid_images/batch_size,
+                        callbacks=callbacks_list)
+    
     model_json = model.to_json()
     with open(os.path.join(os.path.abspath(model_path), 'modelRMSprorp.json'), 'w') as json_file:
         json_file.write(model_json)
