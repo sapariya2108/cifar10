@@ -117,5 +117,5 @@ def train(model_path):
         json_file.write(model_json)
 
 
-model_path = os.path.abspath("/foldername/")
+model_path = "./foldername/"
 train(model_path)
