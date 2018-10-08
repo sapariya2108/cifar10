@@ -61,10 +61,10 @@ def train(model_path):
     model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
 
     A_train,B_train,A_test,B_test = load_cifar10_data(139,139)
-    np.save('A_train', A_train)
-    np.save('B_train', B_train)
-    np.save('A_test', A_test)
-    np.save('B_test', B_test)
+    #np.save('A_train', A_train)
+    #np.save('B_train', B_train)
+    #np.save('A_test', A_test)
+    #np.save('B_test', B_test)
     print("Complete Loading")
     datagen = ImageDataGenerator(
         rescale=1. / 255,
@@ -95,8 +95,8 @@ def train(model_path):
         validation_split=0.0)
     datagen.fit(A_train)
     datagen.fit(A_test)
-    np.save("A_trainFinal",A_train)
-    np.save("A_testFinal",A_test)
+    #np.save("A_trainFinal",A_train)
+    #np.save("A_testFinal",A_test)
     
     final_weights_path=os.path.join(os.path.abspath(model_path),'model_weights.h5')
     
